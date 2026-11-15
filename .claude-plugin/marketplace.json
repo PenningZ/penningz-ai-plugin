@@ -1,0 +1,17 @@
+{
+  "name": "penningz",
+  "owner": {
+    "name": "Penningz",
+    "url": "https://www.penningz.nl"
+  },
+  "metadata": {
+    "description": "The Penningz plugin for Claude: treasurer workflows on top of the Penningz connector."
+  },
+  "plugins": [
+    {
+      "name": "penningz",
+      "source": "./plugins/penningz",
+      "description": "Close the month, divide costs, handle expense claims and explain the saldocontrole of your Penningz group."
+    }
+  ]
+}

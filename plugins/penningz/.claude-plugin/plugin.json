@@ -1,0 +1,24 @@
+{
+  "name": "penningz",
+  "displayName": "Penningz",
+  "version": "0.1.0",
+  "description": "Treasurer workflows for Penningz, the shared bookkeeping app for Dutch student groups and clubs: close the month, divide costs over members, handle expense claims (declaraties), explain the saldocontrole and run savings for activities.",
+  "author": {
+    "name": "Penningz",
+    "url": "https://www.penningz.nl"
+  },
+  "homepage": "https://www.penningz.nl/ai-assistent",
+  "repository": "https://github.com/PenningZ/penningz-ai-plugin",
+  "license": "MIT",
+  "keywords": [
+    "finance",
+    "bookkeeping",
+    "treasurer",
+    "penningmeester",
+    "student",
+    "jaarclub",
+    "dispuut",
+    "studentenhuis"
+  ],
+  "privacyPolicyUrl": "https://www.penningz.nl/privacy"
+}

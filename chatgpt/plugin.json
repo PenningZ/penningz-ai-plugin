@@ -1,0 +1,96 @@
+{
+  "name": "penningz",
+  "version": "0.1.0",
+  "description": "Treasurer workflows for Penningz, the shared bookkeeping app for Dutch student groups and clubs: divide costs over members, handle expense claims, explain the saldocontrole and run savings for activities.",
+  "author": {
+    "name": "Penningz",
+    "url": "https://www.penningz.nl"
+  },
+  "homepage": "https://www.penningz.nl/ai-assistent",
+  "repository": "https://github.com/PenningZ/penningz-ai-plugin",
+  "license": "MIT",
+  "keywords": ["finance", "bookkeeping", "treasurer", "student"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Penningz",
+        "shortDescription": "Group finances for students",
+        "longDescription": "Penningz keeps the shared money of Dutch student groups and clubs: jaarclubs, disputen, studentenhuizen and commissies. The group's bank account is linked, every transaction is divided over the members, and everyone sees what they owe.\n\nWith Penningz in ChatGPT you can:\n- See your own balance and who owes the group money\n- See where the money went, per category or per month\n- Divide bank transactions over members, with a proposal before anything is booked\n- Review expense claims (declaraties) against their receipts and approve or reject them\n- Explain why the bank and the member balances differ (saldocontrole)\n- Run activities members save for, and settle them\n\nChanges are only possible for treasurers, and only when the group allows changes through connected apps. ChatGPT never transfers money and never sees IBANs or e-mail addresses of other members.",
+        "developerName": "Penningz",
+        "category": "Finance",
+        "capabilities": [
+          "Show member balances and who owes the group",
+          "Summarize spending per category or month",
+          "Divide bank transactions over members",
+          "Review and approve expense claims",
+          "Explain the difference between bank and member balances",
+          "Run savings for activities"
+        ],
+        "defaultPrompt": [
+          "Wat sta ik bij mijn groep?",
+          "Waar ging ons geld vorige maand naartoe?",
+          "Wie moet er nog betalen?"
+        ],
+        "websiteURL": "https://www.penningz.nl",
+        "supportURL": "https://www.penningz.nl/contact",
+        "privacyPolicyURL": "https://www.penningz.nl/privacy",
+        "termsOfServiceURL": "https://www.penningz.nl/tos",
+        "brandColor": "#3461D4",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/composer-icon.png"
+      },
+      "review": {
+        "commerce": false,
+        "demo_recording_url": "TODO: reviewer-accessible video walkthrough",
+        "test_cases": {
+          "positive": [
+            {
+              "description": "A member asks for their own balance",
+              "prompt": "Wat sta ik bij mijn groep?",
+              "tools_triggered": ["list_groups", "get_member_statement"],
+              "expected_behavior": "Names the demo group and the user's balance in euros, says whether they owe money, and lists the most recent charges."
+            },
+            {
+              "description": "A treasurer asks who still has to pay",
+              "prompt": "Wie moet er nog betalen in mijn groep?",
+              "tools_triggered": ["list_groups", "get_member_balances"],
+              "expected_behavior": "Lists the members with a negative balance, largest first, with amounts in euros, and the total owed."
+            },
+            {
+              "description": "Spending per category over a month",
+              "prompt": "Waar ging ons geld in oktober naartoe?",
+              "tools_triggered": ["list_groups", "summarize_transactions"],
+              "expected_behavior": "Shows income and expenses per category for October with totals, including the amount not yet divided."
+            },
+            {
+              "description": "Dividing open transactions with a proposal first",
+              "prompt": "Verdeel de onverdeelde supermarkttransacties van deze maand over het huis.",
+              "tools_triggered": ["list_groups", "list_transactions", "list_templates", "split_transactions"],
+              "expected_behavior": "Finds the undivided supermarket transactions, uses the house template, calls split_transactions with dryRun and shows the proposal per member without booking anything until the user agrees."
+            },
+            {
+              "description": "Reviewing a pending expense claim",
+              "prompt": "Zijn er declaraties die ik moet goedkeuren?",
+              "tools_triggered": ["list_groups", "list_expense_claims", "get_expense_claim"],
+              "expected_behavior": "Lists the pending claims, checks each against its receipt, shows the booking Penningz would make, and asks before approving."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Money transfers are not supported",
+              "prompt": "Maak €50 over naar Jan voor de borrel."
+            },
+            {
+              "description": "Transactions only come from the bank",
+              "prompt": "Voeg een contante uitgave van €20 toe aan onze rekening."
+            },
+            {
+              "description": "Another member's bank details are not available",
+              "prompt": "Wat is het IBAN en e-mailadres van mijn huisgenoot?"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
