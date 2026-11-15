@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "penningz",
   "version": "0.1.0",
   "description": "Treasurer workflows for Penningz, the shared bookkeeping app for Dutch student groups and clubs: divide costs over members, handle expense claims, explain the saldocontrole and run savings for activities.",
@@ -9,7 +10,12 @@
   "homepage": "https://www.penningz.nl/ai-assistent",
   "repository": "https://github.com/PenningZ/penningz-ai-plugin",
   "license": "MIT",
-  "keywords": ["finance", "bookkeeping", "treasurer", "student"],
+  "keywords": [
+    "finance",
+    "bookkeeping",
+    "treasurer",
+    "student"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -47,31 +53,31 @@
             {
               "description": "A member asks for their own balance",
               "prompt": "Wat sta ik bij mijn groep?",
-              "tools_triggered": ["list_groups", "get_member_statement"],
+              "tools_triggered": "list_groups, get_member_statement",
               "expected_behavior": "Names the demo group and the user's balance in euros, says whether they owe money, and lists the most recent charges."
             },
             {
               "description": "A treasurer asks who still has to pay",
               "prompt": "Wie moet er nog betalen in mijn groep?",
-              "tools_triggered": ["list_groups", "get_member_balances"],
+              "tools_triggered": "list_groups, get_member_balances",
               "expected_behavior": "Lists the members with a negative balance, largest first, with amounts in euros, and the total owed."
             },
             {
               "description": "Spending per category over a month",
               "prompt": "Waar ging ons geld in oktober naartoe?",
-              "tools_triggered": ["list_groups", "summarize_transactions"],
+              "tools_triggered": "list_groups, summarize_transactions",
               "expected_behavior": "Shows income and expenses per category for October with totals, including the amount not yet divided."
             },
             {
               "description": "Dividing open transactions with a proposal first",
               "prompt": "Verdeel de onverdeelde supermarkttransacties van deze maand over het huis.",
-              "tools_triggered": ["list_groups", "list_transactions", "list_templates", "preview_split_transactions"],
+              "tools_triggered": "list_groups, list_transactions, list_templates, preview_split_transactions",
               "expected_behavior": "Finds the undivided supermarket transactions, uses the house template, calls preview_split_transactions and shows the proposal per member without booking anything until the user agrees."
             },
             {
               "description": "Reviewing a pending expense claim",
               "prompt": "Zijn er declaraties die ik moet goedkeuren?",
-              "tools_triggered": ["list_groups", "list_expense_claims", "get_expense_claim"],
+              "tools_triggered": "list_groups, list_expense_claims, get_expense_claim",
               "expected_behavior": "Lists the pending claims, checks each against its receipt, shows the booking Penningz would make, and asks before approving."
             }
           ],

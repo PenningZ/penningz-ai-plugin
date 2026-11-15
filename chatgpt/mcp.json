@@ -3,7 +3,17 @@
   "mcpServers": {
     "penningz": {
       "type": "streamable-http",
-      "url": "https://www.penningz.nl/mcp"
+      "url": "https://www.penningz.nl/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            }
+          }
+        }
+      }
     }
   }
 }

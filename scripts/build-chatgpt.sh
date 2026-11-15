@@ -25,5 +25,5 @@ cp -R "$root/chatgpt/assets" "$build/assets"
 cp -R "$root/plugins/penningz/skills" "$build/skills"
 find "$build" -name '.DS_Store' -delete
 
-(cd "$build" && zip -qr -X "$out" .)
+(cd "$build" && zip -qr -X -D "$out" .)
 echo "Built $out"
