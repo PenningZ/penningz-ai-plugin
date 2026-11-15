@@ -30,7 +30,7 @@ Penningz computes the cents so the shares add up exactly. Never compute or round
 
 ## Book it
 
-- **Several transactions**: `split_transactions` with `dryRun: true` (the default). Show the proposal as a short table: transaction, amount, who pays what. Only after the user agrees, call it again with exactly the same items and `dryRun: false`. That books all or none.
+- **Several transactions**: `preview_split_transactions` gives the proposal without booking anything. Show it as a short table: transaction, amount, who pays what. Only after the user agrees, call `split_transactions` with exactly the same items and `dryRun: false`. That books all or none.
 - **One transaction**: say what you will book, then `create_split`. Pass `amount` to divide only part of it; the rest stays "nog te verdelen".
 - Set a category with `categoryId` (ids from `get_group_overview`; `create_category` for a new one).
 - A transfer between the group's own accounts is not a cost: mark it with `update_transactions` (`transfer: true`) instead of dividing it.

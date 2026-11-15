@@ -65,8 +65,8 @@
             {
               "description": "Dividing open transactions with a proposal first",
               "prompt": "Verdeel de onverdeelde supermarkttransacties van deze maand over het huis.",
-              "tools_triggered": ["list_groups", "list_transactions", "list_templates", "split_transactions"],
-              "expected_behavior": "Finds the undivided supermarket transactions, uses the house template, calls split_transactions with dryRun and shows the proposal per member without booking anything until the user agrees."
+              "tools_triggered": ["list_groups", "list_transactions", "list_templates", "preview_split_transactions"],
+              "expected_behavior": "Finds the undivided supermarket transactions, uses the house template, calls preview_split_transactions and shows the proposal per member without booking anything until the user agrees."
             },
             {
               "description": "Reviewing a pending expense claim",

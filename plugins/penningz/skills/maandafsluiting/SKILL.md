@@ -17,7 +17,7 @@ Goal: every transaction divided, claims handled, the saldocontrole explained, an
 
 1. `list_transactions` with `onlyNotYetDivided: true` and the period (`from`, `to`).
 2. Group them by kind (supermarket, rent, bar, trip). For each group, find a template with `list_templates`.
-3. Propose the division with `split_transactions` (`dryRun: true`) and show it. Book after the user agrees. Follow the `kosten-verdelen` skill: never guess who joined.
+3. Propose the division with `preview_split_transactions` and show it. Book it with `split_transactions` (`dryRun: false`) after the user agrees. Follow the `kosten-verdelen` skill: never guess who joined.
 4. Transfers between the group's own accounts: mark them with `update_transactions` instead of dividing them.
 
 ## 3. Expense claims
