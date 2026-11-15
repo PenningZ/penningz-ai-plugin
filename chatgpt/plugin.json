@@ -47,7 +47,6 @@
       },
       "review": {
         "commerce": false,
-        "demo_recording_url": "TODO: reviewer-accessible video walkthrough",
         "test_cases": {
           "positive": [
             {
